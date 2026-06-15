@@ -7,6 +7,7 @@ namespace PiSubmarine::Error::Api
 		ContractError,
 		CommunicationError,
 		DeviceError,
+		NotReady,
 		UnknownError
 	};
 }
