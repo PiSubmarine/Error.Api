@@ -78,6 +78,13 @@ namespace PiSubmarine::Error::Api
 		EXPECT_NE(MakeError(ErrorCondition::ContractError), MakeError(ErrorCondition::ContractError, cause));
 	}
 
+	TEST(ErrorTest, SupportsGenericPersistenceRelatedConditions)
+	{
+		EXPECT_EQ(MakeError(ErrorCondition::NotFound).Condition, ErrorCondition::NotFound);
+		EXPECT_EQ(MakeError(ErrorCondition::PermissionDenied).Condition, ErrorCondition::PermissionDenied);
+		EXPECT_EQ(MakeError(ErrorCondition::ResourceExhausted).Condition, ErrorCondition::ResourceExhausted);
+	}
+
 	TEST(ErrorTest, ResultAliasWorksForValueAndVoid)
 	{
 		const Result<int> valueResult = 42;

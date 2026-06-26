@@ -7,7 +7,10 @@ namespace PiSubmarine::Error::Api
 		ContractError,
 		CommunicationError,
 		DeviceError,
+		NotFound,
 		NotReady,
+		PermissionDenied,
+		ResourceExhausted,
 		UnknownError
 	};
 }
