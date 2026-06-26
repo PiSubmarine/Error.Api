@@ -5,6 +5,7 @@ add_library(${PISUBMARINE_MODULE_NAME} INTERFACE
         "../public/PiSubmarine/Error/Api/Error.h"
         "../public/PiSubmarine/Error/Api/ErrorCondition.h"
         "../public/PiSubmarine/Error/Api/MakeError.h"
-        "../public/PiSubmarine/Error/Api/Result.h")
+        "../public/PiSubmarine/Error/Api/Result.h"
+        "../public/PiSubmarine/Error/Api/ToStringView.h")
 target_include_directories(${PISUBMARINE_MODULE_NAME} INTERFACE "../public")
 PiSubmarineInitTarget(${PISUBMARINE_MODULE_NAME})

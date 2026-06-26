@@ -5,6 +5,7 @@
 
 #include "PiSubmarine/Error/Api/MakeError.h"
 #include "PiSubmarine/Error/Api/Result.h"
+#include "PiSubmarine/Error/Api/ToStringView.h"
 
 namespace PiSubmarine::Error::Api
 {
@@ -83,6 +84,21 @@ namespace PiSubmarine::Error::Api
 		EXPECT_EQ(MakeError(ErrorCondition::NotFound).Condition, ErrorCondition::NotFound);
 		EXPECT_EQ(MakeError(ErrorCondition::PermissionDenied).Condition, ErrorCondition::PermissionDenied);
 		EXPECT_EQ(MakeError(ErrorCondition::ResourceExhausted).Condition, ErrorCondition::ResourceExhausted);
+	}
+
+	TEST(ErrorTest, ToStringViewReturnsStableHumanReadableNames)
+	{
+		static_assert(ToStringView(ErrorCondition::ContractError) == "contract error");
+		static_assert(ToStringView(ErrorCondition::CommunicationError) == "communication error");
+		static_assert(ToStringView(ErrorCondition::DeviceError) == "device error");
+		static_assert(ToStringView(ErrorCondition::NotFound) == "not found");
+		static_assert(ToStringView(ErrorCondition::NotReady) == "not ready");
+		static_assert(ToStringView(ErrorCondition::PermissionDenied) == "permission denied");
+		static_assert(ToStringView(ErrorCondition::ResourceExhausted) == "resource exhausted");
+		static_assert(ToStringView(ErrorCondition::UnknownError) == "unknown error");
+
+		EXPECT_EQ(ToStringView(ErrorCondition::ContractError), std::string_view("contract error"));
+		EXPECT_EQ(ToStringView(ErrorCondition::NotReady), std::string_view("not ready"));
 	}
 
 	TEST(ErrorTest, ResultAliasWorksForValueAndVoid)
